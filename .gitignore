@@ -2,6 +2,7 @@ node_modules/
 apps/api/data/
 apps/api/generated/
 dist/
+public/
 .DS_Store
 .env
 .env.*

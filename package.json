@@ -10,6 +10,9 @@
     "test": "npm test -w apps/api",
     "seed": "node apps/api/src/seed.js"
   },
+  "dependencies": {
+    "express": "^4.21.1"
+  },
   "devDependencies": {
     "concurrently": "^9.1.0"
   },
