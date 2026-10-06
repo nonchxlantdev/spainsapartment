@@ -1,0 +1,145 @@
+/* apps/web/src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark HUD theme (default) */
+    --color-background: 11 18 32;
+    --color-surface: 18 26 44;
+    --color-muted: 22 34 58;
+    --color-foreground: 234 241 255;
+    --color-mutedfg: 140 160 191;
+    --color-panel: 18 26 44;
+    --color-panel-alt: 22 34 58;
+  }
+
+  :root[data-theme='light'] {
+    /* Light theme */
+    --color-background: 241 245 251;
+    --color-surface: 255 255 255;
+    --color-muted: 231 236 244;
+    --color-foreground: 15 23 42;
+    --color-mutedfg: 71 85 105;
+    --color-panel: 255 255 255;
+    --color-panel-alt: 246 248 251;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans min-h-screen transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .hud-panel {
+    background: rgb(var(--color-panel));
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    box-shadow: 0 0 24px -8px rgba(245, 158, 11, 0.35);
+    clip-path: polygon(
+      0 12px,
+      12px 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% calc(100% - 12px),
+      calc(100% - 12px) 100%,
+      12px 100%,
+      0 calc(100% - 12px)
+    );
+    position: relative;
+  }
+
+  .hud-panel::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: 0;
+    height: 2px;
+    background: rgba(245, 158, 11, 0.85);
+    pointer-events: none;
+  }
+
+  .hud-panel-cyan {
+    background: rgb(var(--color-panel));
+    border: 1px solid rgba(34, 211, 238, 0.4);
+    box-shadow: 0 0 24px -8px rgba(34, 211, 238, 0.35);
+    clip-path: polygon(
+      0 12px,
+      12px 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% calc(100% - 12px),
+      calc(100% - 12px) 100%,
+      12px 100%,
+      0 calc(100% - 12px)
+    );
+    position: relative;
+  }
+
+  .hud-panel-cyan::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: 0;
+    height: 2px;
+    background: rgba(34, 211, 238, 0.85);
+    pointer-events: none;
+  }
+
+  .hud-scan-input {
+    @apply w-full border rounded-md bg-muted text-foreground pl-9 pr-3 py-2 text-[13px] font-mono;
+    border-color: rgba(34, 211, 238, 0.35);
+  }
+
+  .hud-scan-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.45);
+    border-color: rgba(34, 211, 238, 0.7);
+  }
+}
+
+@layer utilities {
+  @keyframes hud-shimmer {
+    0% { transform: translateX(-120%); }
+    100% { transform: translateX(120%); }
+  }
+  @keyframes hud-pulse-dot {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+  }
+  @keyframes hud-toast-in {
+    from { opacity: 0; transform: translateY(10px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes hud-row-in {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes hud-sweep {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .animate-hud-shimmer { animation: hud-shimmer 2.4s ease-in-out infinite; }
+  .animate-hud-pulse-dot { animation: hud-pulse-dot 2.2s ease-in-out infinite; }
+  .animate-toast-in { animation: hud-toast-in 0.22s ease-out; }
+  .animate-row-in { animation: hud-row-in 0.3s ease-out both; }
+  .animate-hud-sweep { animation: hud-sweep 7s linear infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hud-shimmer,
+    .animate-hud-pulse-dot,
+    .animate-toast-in,
+    .animate-row-in,
+    .animate-hud-sweep {
+      animation: none !important;
+    }
+  }
+}

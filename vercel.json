@@ -1,0 +1,12 @@
+{
+  "installCommand": "npm install",
+  "buildCommand": "npm run build -w @spains-apartment/web",
+  "outputDirectory": "apps/web/dist",
+  "framework": null,
+  "functions": {
+    "api/[...path].mjs": {
+      "maxDuration": 60,
+      "includeFiles": "apps/api/src/db/schema.sql,apps/api/assets/**"
+    }
+  }
+}

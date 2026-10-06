@@ -1,0 +1,23 @@
+{
+  "name": "@spains-apartment/api",
+  "private": true,
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "test": "vitest run",
+    "seed": "node src/seed.js"
+  },
+  "dependencies": {
+    "archiver": "^8.0.0",
+    "better-sqlite3": "^12.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "pdfkit": "^0.15.1"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0",
+    "vitest": "^2.1.4"
+  }
+}
