@@ -1,10 +1,4 @@
 {
   "installCommand": "npm install",
-  "buildCommand": "npm run build -w @spains-apartment/web && node --input-type=module -e \"import fs from 'node:fs'; fs.cpSync('apps/web/dist','public',{recursive:true})\"",
-  "functions": {
-    "server.mjs": {
-      "maxDuration": 60,
-      "includeFiles": "apps/api/src/db/schema.sql,apps/api/assets/**"
-    }
-  }
+  "buildCommand": "npm run build -w @spains-apartment/web && node --input-type=module -e \"import fs from 'node:fs'; fs.cpSync('apps/web/dist','public',{recursive:true})\""
 }
