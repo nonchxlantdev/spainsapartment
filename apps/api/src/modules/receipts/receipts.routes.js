@@ -2,12 +2,9 @@
 import { Router } from 'express';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createRequire } from 'node:module';
+import { ZipArchive } from 'archiver';
 import { renderReceiptPdf } from './receipts.pdf.js';
 import { tenantInitials } from '../payments/payments.service.js';
-
-const require = createRequire(import.meta.url);
-const { ZipArchive } = require('archiver');
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ASSETS = path.join(__dirname, '..', '..', '..', 'assets');
